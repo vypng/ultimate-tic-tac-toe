@@ -33,7 +33,7 @@ import java.util.*;
 
 // main method for ultimate tic-tac-toe game
 public class DriverMain {
-	public static void main(String[] args) {
+	public static void main(String args[]) {
 		// game header
 		System.out.println("‿︵‿︵‿︵‿︵‿︵‿︵‿︵‿︵୨˚̣̣̣⋇⊶⊰❣⊱⊷⋇˚̣̣̣͙୧‿︵‿︵‿︵‿︵‿︵‿︵‿︵\n");
 		System.out.println("｡✧ ༺ ♥ ༻ ୨୧  ULTIMATE TIC-TAC-TOE GAME  ୨୧ ༺ ♥ ༻ ✧｡\n");

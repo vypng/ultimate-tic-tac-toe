@@ -33,27 +33,25 @@ import java.util.*;
 
 public class UltTTTGame {
 	// data fields
-	int size = 9;
-	int choice;
-	Board[] UltTTTBoard = new Board[size];
-	Player[] players = new Player[2];
-	int currPlayer, currBoard, currBox, prevBoard;
-	boolean firstMove;
+	private int size = 9;
+	private int choice;
+	private Board UltTTTBoard[] = new Board[size];
+	private Player players[] = new Player[2];
+	private int currPlayer, currBoard, currBox, prevBoard;
+	private boolean firstMove;
 
 	// parameterized constructor
 	public UltTTTGame(Player player1, Player player2) {
+		// place players in an array
+		this.players[0] = player1;
+		this.players[1] = player2;
 		// generate 9 standard TTT boards for the UltimateTTT board
 		for(int i = 0; i < size; i++)
 			UltTTTBoard[i] = new Board();
-		// on start of a new game, assign players to array and indicate
-		// that it's the first move
-		this.firstMove = true;
-		this.players[0] = player1;
-		this.players[1] = player2;
 	}
 	
 	// method for players to choose marks
-	private String chooseMark() {
+	public String chooseMark() {
 		// user inputs their desired mark
 		Scanner markInput = new Scanner(System.in);
 		String mark = markInput.nextLine();
@@ -75,7 +73,7 @@ public class UltTTTGame {
 	}
 	
 	// method user picks which gamemode they want to play
-	void chooseGamemode() {
+	public void chooseGamemode() {
 		System.out.println("➤ Choose your gamemode!");
 		System.out.println("  1. Player vs. Player");
 		System.out.println("  2. Player vs. AI");
@@ -103,7 +101,7 @@ public class UltTTTGame {
 		}
 	}
 	
-	void determineMarks() {
+	public void determineMarks() {
 		System.out.println();
 		// based on choice, let players choose their marks. first human player
 		// will always be the priority choice, while AI will be last to choose
@@ -168,7 +166,7 @@ public class UltTTTGame {
 	}
 	
 	// method to switch players after every turn, using player indices
-	private void switchPlayer() {
+	public void switchPlayer() {
 		if(currPlayer == 0)
 			currPlayer = 1;
 		else if(currPlayer == 1)
@@ -176,7 +174,9 @@ public class UltTTTGame {
 	}
 	
 	// method to start game!
-	void start() {
+	public void start() {
+		// indicate that it's the first move
+		this.firstMove = true;
 		// set current player index to 1 (which will switch to player index 0 upon start)
 		this.currPlayer = 1;
 		do {
@@ -198,7 +198,7 @@ public class UltTTTGame {
 			// any other time in the game, the box selected will send you to
 			// the corresponding board
 			else {
-				currBox = currBoard;
+				currBoard = currBox;
 			}
 			System.out.println("You're on Board #" + (currBoard+1) + "!");
 			
@@ -213,7 +213,7 @@ public class UltTTTGame {
 				if(!UltTTTBoard[currBoard].hasWon())
 					UltTTTBoard[currBoard].hasWinner();
 				// set current box to current board to continue playing
-				currBox = currBoard;
+				currBoard = currBox;
 			}
 			// else if move can't be made/the box is full,  
 			else {
@@ -228,7 +228,7 @@ public class UltTTTGame {
 	
 	
 	// method to print the ultimate tic-tac-toe board
-	private void print() {
+	public void print() {
 		System.out.println("\n--~~=►► CURRENT BOARD ◄◄=~~--");
 		System.out.println("▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬");
 		

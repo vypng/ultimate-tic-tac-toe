@@ -31,10 +31,10 @@
 
 public class Board {
 	// data fields
-	int size = 9;
+	private int size = 9;
 	// temporary winner mark if there's no winner
 	private String winnerMark = "NA";
-	Box[] boxes = new Box[size];
+	public Box boxes[] = new Box[size];
 	
 	// create 9 boxes with empty place-holders (dash) to make one
 	// standard TTT board

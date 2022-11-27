@@ -29,13 +29,13 @@
  * 		times to instantly see these possibilities (tie/no winner, player1 wins, or player2 wins).  
  */
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Human extends Player{
 	// data fields
-	Scanner input = new Scanner(System.in);
-	int boxNum;
-	int boardNum;
+	private int boxNum;
+	private int boardNum;
 	
 	// access super class constructor
 	public Human(String name, String mark) {
@@ -47,12 +47,22 @@ public class Human extends Player{
 	public int chooseBox() {
 		// ask player's desired box
 		System.out.print("Choose a box to place your mark (1-9): ");
-		boxNum = input.nextInt();
-		
-		// input validation for box
-		while(boxNum < 1 || boxNum > 9) {
-			System.out.print("Invalid input. Choose a box to place your mark (1-9): ");
-			boxNum = input.nextInt();
+		while(true) {
+			try {
+				Scanner input = new Scanner(System.in);
+				boxNum = input.nextInt();
+				
+				// input validation for box
+				while(boxNum < 1 || boxNum > 9) {
+					System.out.print("Invalid input. Choose a box to place your mark (1-9): ");
+					boxNum = input.nextInt();
+				}
+				break;
+			}
+			// if input is not integer
+			catch (InputMismatchException e) {
+				System.out.print("Invalid input. Choose a box to place your mark (1-9): ");
+			}
 		}
 		// return the index to be usable in arrays
 		return boxNum-1;
@@ -61,15 +71,24 @@ public class Human extends Player{
 	public int chooseBoard() {
 		// ask player's desired board
 		System.out.print("Choose a board to play on (1-9): ");
-		boardNum = input.nextInt();
 		
-		// input validation for board
-		while(boardNum < 1 || boardNum > 9) {
-			System.out.print("Invalid input. Choose a box to place your mark (1-9): ");
-			boardNum = input.nextInt();
+		while (true) {
+			try {
+				Scanner input = new Scanner(System.in);
+				boardNum = input.nextInt();
+				// input validation for board
+				while(boardNum < 1 || boardNum > 9) {
+					System.out.print("Invalid input. Choose a board to play on (1-9): ");
+					boardNum = input.nextInt();
+				}
+				break;
+			} 
+			// if input is not integer
+			catch (InputMismatchException k) {
+				System.out.print("Invalid input. Choose a board to play on (1-9): ");
+			}
 		}
 		// return the index to be usable in arrays
 		return boardNum-1;
 	}
-
 }
