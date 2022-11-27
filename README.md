@@ -13,3 +13,7 @@ The standard Tic-Tac-Toe game but made more fun! Ultimate Tic-Tac-Toe is made up
 	- ability to choose which player you want (Player 1 or Player 2)
 	- upon the game finishing, ask to start a new game
 	- let the user choose any mark they want (other than X or O)
+	
+# notes
+	1. This game runs on console; no GUI supported!
+	2. The styling is meant to be run on Eclipse (some special symbols aren't supported in other IDEs such as IntelliJ).
